@@ -11,7 +11,6 @@ public class PermutWithoutRepetitions {
         char[] elements = input.toCharArray();
         int n = elements.length;
 
-        char[] permutation = new char[n];
         permute(elements, 0, n - 1);
     }
 
