@@ -17,9 +17,8 @@ public class InversionCount {
         if (index == array.length) {
             System.out.println(counter);
         } else {
-            int num = array[index];
             for (int i = index; i < array.length; i++) {
-                if (array[i] < num) {
+                if (array[i] < array[index]) {
                     counter++;
                 }
             }
