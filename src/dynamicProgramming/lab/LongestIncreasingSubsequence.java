@@ -6,7 +6,6 @@ import java.util.Scanner;
 public class LongestIncreasingSubsequence {
     public static void main(String[] args) {
         Scanner scanner = new Scanner(System.in);
-
         int[] input = Arrays.stream(scanner.nextLine().split(" ")).mapToInt(Integer::parseInt).toArray();
         findSubsequence(input);
     }
