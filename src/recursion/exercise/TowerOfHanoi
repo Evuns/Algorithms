@@ -1,0 +1,39 @@
+package recursion.exercise;
+
+import java.util.ArrayDeque;
+import java.util.Scanner;
+
+public class TowerOfHanoi {
+
+    private static int steps = 0;
+
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+        int numberOfDiscs = scanner.nextInt();
+        ArrayDeque<Integer> source = new ArrayDeque<>();
+        for (int i = numberOfDiscs; i > 0; i--) {
+            source.add(i);
+        }
+        ArrayDeque<Integer> intermediate = new ArrayDeque<>();
+        ArrayDeque<Integer> end = new ArrayDeque<>();
+        System.out.printf("Source: %s%nDestination:%nSpare:%n", source.toString().replaceAll("\\[|]", ""));
+        shift(numberOfDiscs, source, intermediate, end);
+    }
+
+    private static void shift(int n, ArrayDeque<Integer> source, ArrayDeque<Integer> intermediate, ArrayDeque<Integer> end) {
+        if (n == 0) {
+            return;
+        }
+        shift(n - 1, source, intermediate, end);
+        print(n, source, intermediate, end, ++steps);
+        shift(n - 1, intermediate, end, source);
+
+    }
+
+    private static void print(int disk, ArrayDeque<Integer> source, ArrayDeque<Integer> spare, ArrayDeque<Integer> destination, int step) {
+        System.out.printf("%nStep #%d:Moved disk %d%n", step, disk);
+        System.out.printf("Source: %s%n", source.toString().replaceAll("\\[|]", ""));
+        System.out.printf("Destination: %s%n", destination.toString().replaceAll("\\[|]", ""));
+        System.out.printf("Spare: %s%n", spare.toString().replaceAll("\\[|]", ""));
+    }
+}
